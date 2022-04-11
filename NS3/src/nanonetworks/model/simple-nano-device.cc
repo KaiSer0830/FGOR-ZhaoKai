@@ -354,7 +354,7 @@ void SimpleNanoDevice::SetCapEnergySpeed(int speed) {
 void SimpleNanoDevice::HarvestEnergy() {
 	NS_LOG_FUNCTION(this);
 	Ptr<UniformRandomVariable> random = CreateObject<UniformRandomVariable> ();			//类UniformRandomVariable从RandomVariableStream继承
-	double nowCapEnergySpeed = random->GetValue(1.0, m_capEnergySpeed);			//根据随机数产生不同的能量捕获率,0.7-0.8pJ/s
+	double nowCapEnergySpeed = random->GetValue(1.0, m_capEnergySpeed);			//根据随机数产生不同的能量捕获率,1-5pJ/s
 	double HarEnergyThisTime = m_capEnergyInterval * nowCapEnergySpeed;
 	//std::cout << "before: " << m_energy << " " << "HarEnergyThisTime: " << HarEnergyThisTime << std::endl;
 	m_energy = m_energy + HarEnergyThisTime ;
@@ -481,8 +481,8 @@ double SimpleNanoDevice::GetMinSatisfidForwardEnergy() {			//邻居节点最小�
 
 void SimpleNanoDevice::EvendJudge() {
 	if(nodeSchedule.IsExpired()) {
-		double nextTime = GetL3()->getNextMessageGenerateTime();						//获取节点下一次产生数据包的间隔，间隔是1-4s之内的随机值
-		//发送节点延时1-4s之后重新产生新的数据包
+		double nextTime = GetL3()->getNextMessageGenerateTime();						//获取节点下一次产生数据包的间隔，间隔是2-5s之内的随机值
+		//发送节点延时2-5s之后重新产生新的数据包
 		//std::cout << m_node->GetId() << "+++++++" << nextTime << std::endl;
 		nodeSchedule = Simulator::Schedule (Seconds (nextTime), &MessageProcessUnit::CreteMessage, GetMessageProcessUnit());
 	}

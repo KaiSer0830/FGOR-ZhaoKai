@@ -436,12 +436,12 @@ void Run(int nbNanoNodes, int nbNanoRouters, int nbNanoGateways, double txRangeN
 		Ptr<MessageProcessUnit> mpu = CreateObject<MessageProcessUnit> ();
 		mpu->SetDevice(d_nodes.Get(i)->GetObject<SimpleNanoDevice> ());
 		d_nodes.Get(i)->GetObject<SimpleNanoDevice> ()->SetMessageProcessUnit(mpu);		//只有纳米节点和纳米网关才设置了信息处理单元并在节点内部函数设置节点传输数据包的大小
-		double startTime = random->GetValue(1, 3);
+		double startTime = random->GetValue(2, 5);
 		//std::cout << d_nodes.Get(i)->GetObject<SimpleNanoDevice> ()->GetNode()->GetId() << " " << startTime << std::endl;
 		d_nodes.Get(i)->GetObject<SimpleNanoDevice>()->nodeSchedule = Simulator::Schedule(Seconds(startTime), &MessageProcessUnit::CreteMessage, mpu);		//每个纳米节点调用CreteMessage函数的间隔,间隔为1-3s中一个随机时间
 
 		if(l3Type == 4) {
-			double startTime = random->GetValue(0.9, 1.0);		//在节点产生数据包的同时
+			double startTime = random->GetValue(1.8, 2.0);		//在节点产生数据包的同时
 			Simulator::Schedule(Seconds(startTime), &MessageProcessUnit::ComputeAverageIndex, mpu);		//每个纳米节点调用CretetestMessage函数的间隔
 		}
 

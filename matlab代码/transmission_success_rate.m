@@ -1,7 +1,7 @@
 clear all;              %%清除工作空间的所有变量
 linearWidth = 1.2;      %线条宽度
 all_nodeNums = [10; 20; 30; 40; 50; 60; 70; 80; 90; 100];
-filesNum = 5;           %实验的次数
+filesNum = 15;           %实验的次数
 nodeNum = 10;           %实验节点的次数
 zValue = 1.96;          %置信区间的z值
 %%做了20组实验，每组实验取10个点

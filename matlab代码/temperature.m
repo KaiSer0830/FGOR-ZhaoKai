@@ -4,7 +4,7 @@ filesNum = 10;          %实验的次数
 nodeNum = 10;           %实验节点的次数
 for i=1:filesNum
     for j=1:nodeNum
-        file = ['D:\professional_install\matlab\bin\project_files\opport_circle_zhao\log', num2str(i),'\opport_nanonodeposition',num2str(j), '.log'];
+        file = ['D:\professional_install\matlab\bin\project_files\relative_position_chen\log', num2str(i),'\relative_pos_nanonodeposition',num2str(j), '.log'];
         fid = fopen(file);
         C = textscan(fid, '%f%f%f%f%f%f%s%f');          %%其中fid为fopen命令返回的文件标识符，format实际上就是一个字符串变量，表示读取数据及数据转换的规则。
         fclose(fid);
@@ -23,12 +23,12 @@ y = zeros(1,length(x));
 for i=1:length(y)
     y(i) = size(find(data2 < x(i)), 1);
 end
-y = y./29002;
+y = y./12216;
 plot(x, y, '-r', 'LineWidth', 2);
-% xlabel('Temperatrue increase ΔT(℃)');
-% ylabel('Cumulative distribution function(CDF)');
-xlabel('上升温度ΔT(℃)');
-ylabel('积累分布函数(CDF)');
+xlabel('Temperatrue increase ΔT(℃)');
+ylabel('Cumulative distribution function(CDF)');
+% xlabel('上升温度ΔT(℃)');
+% ylabel('积累分布函数(CDF)');
 legend('simulation of CDF')
 %hold on作用是保持原图并接受此后绘制的新的曲线,叠加绘图; 
 hold on
